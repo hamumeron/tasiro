@@ -1,0 +1,21 @@
+<!-- tashiro.html -->
+<!DOCTYPE html>
+<html>
+<body>
+  <input id="url" placeholder="http://your.server/path">
+  <input id="interval" placeholder="1000 (ms)">
+  <button onclick="start()">Start</button>
+
+  <script>
+  let timer;
+  function start() {
+    const url = document.getElementById('url').value;
+    const ms = parseInt(document.getElementById('interval').value, 10);
+    timer = setInterval(() => {
+      fetch(url).then(res => console.log(res.status));
+    }, ms);
+  }
+  function stop() { clearInterval(timer); }
+  </script>
+</body>
+</html>
